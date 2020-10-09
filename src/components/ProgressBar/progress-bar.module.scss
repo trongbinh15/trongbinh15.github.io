@@ -1,0 +1,62 @@
+@import '../../Variables.scss';
+
+.container {
+    margin-left: 10px;
+
+    .information {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+    }
+
+    .bar {
+        width: 100%;
+        position: relative;
+
+        .full {
+            height: 8px;
+            background-color: #ddd;
+            z-index: 1;
+            position: relative;
+
+            &:after {
+                content: '';
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                background-color: inherit;
+                position: absolute;
+                right: -4px;
+            }
+        }
+
+        .progress {
+            position: absolute;
+            height: 8px;
+            bottom: 0;
+            z-index: 2;
+            background-color: $primary-color;
+
+            &::before {
+                content: '';
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                background-color: inherit;
+                position: absolute;
+                left: -4px;
+            }
+
+            &::after {
+                content: '';
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                background-color: inherit;
+                position: absolute;
+                right: -4px;
+            }
+
+        }
+    }
+}
