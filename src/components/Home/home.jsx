@@ -1,6 +1,5 @@
 import React, { lazy } from 'react';
 import styled from './home-styles.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import background from '../../asset/images/pexels-pixabay-373076.jpg';
 import ImageLoading from '../ImageLoading/image-loading';
 
@@ -17,16 +16,16 @@ function HomeComponent() {
                         <h1> </h1>
                         <div className={styled['sm']}>
                             <a href="https://www.facebook.com/trongbinhnguyen15/">
-                                <FontAwesomeIcon icon={['fab', 'facebook']} ></FontAwesomeIcon>
+                                <i class="fab fa-facebook"></i>
                             </a>
                             <a href="https://www.linkedin.com/in/trongbinhnguyen15">
-                                <FontAwesomeIcon icon={['fab', 'linkedin']} ></FontAwesomeIcon>
+                                <i class="fab fa-linkedin"></i>
                             </a>
                             <a href="https://www.github.com/trongbinh15/">
-                                <FontAwesomeIcon icon={['fab', 'github']} ></FontAwesomeIcon>
+                                <i class="fab fa-github"></i>
                             </a>
                             <a href="https://www.instagram.com/trongbinh15/">
-                                <FontAwesomeIcon icon={['fab', 'instagram']} ></FontAwesomeIcon>
+                                <i class="fab fa-instagram"></i>
                             </a>
                         </div>
                         <div className={styled['buttons']}>

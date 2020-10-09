@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: { 
@@ -45,6 +47,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
@@ -60,9 +63,15 @@ module.exports = {
           name: 'vendors',
           chunks: 'all',
         },
+        common: {
+          test: /[\\/]src[\\/]components[\\/]/,
+          chunks: "all",
+          minSize: 0,
+        }
       },
     },
     runtimeChunk: 'single',
+    minimizer: [new TerserPlugin({ /* additional options here */ })], // for build production only
   },
   resolve: {
     extensions: ['.js', '.jsx']
