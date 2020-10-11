@@ -1,17 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: { 
     index: './src/index.js',
-    home: './src/components/Home/home.jsx',
-    about: './src/components/About/about.jsx',
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -41,16 +37,12 @@ module.exports = {
       },
     ]
   },
-  // devtool: 'inline-source-map', //comment if build production
-  devServer: {
-    contentBase: './dist',
-  },
   plugins: [
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
+      title: "My Portfolio",
       inject: "body"
     })
   ],
@@ -62,16 +54,18 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all',
+          priority: 20
         },
         common: {
           test: /[\\/]src[\\/]components[\\/]/,
           chunks: "all",
+          reuseExistingChunk: true,
           minSize: 0,
+          priority: 10
         }
       },
     },
     runtimeChunk: 'single',
-    minimizer: [new TerserPlugin({ /* additional options here */ })], // for build production only
   },
   resolve: {
     extensions: ['.js', '.jsx']

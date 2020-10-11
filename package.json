@@ -5,10 +5,10 @@
   "homepage": "https://trongbinh15.github.io",
   "main": "index.js",
   "scripts": {
-    "static": "webpack --profile --json > stats.json && webpack-bundle-analyzer bundle/output/path/stats.json",
-    "start": "webpack-dev-server --mode development --open --hot --watch",
-    "build": "webpack --mode production",
-    "predeploy": "npm run build",
+    "start": "webpack-dev-server --open --hot --watch --config webpack.dev.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js",
+    "predeploy": "npm run build:prod",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -38,7 +38,8 @@
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
   },
   "dependencies": {
     "react": "^16.13.1",
