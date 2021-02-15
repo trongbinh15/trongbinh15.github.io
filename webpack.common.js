@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: { 
-    index: './src/index.js',
+    index: './src/index.tsx',
   },
   output: {
     filename: '[name].[hash].js',
@@ -12,6 +12,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: ['ts-loader']
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -68,6 +72,6 @@ module.exports = {
     runtimeChunk: 'single',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.tsx']
   }
 };
