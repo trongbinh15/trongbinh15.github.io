@@ -16,16 +16,16 @@ function HomeComponent() {
                         <h1> </h1>
                         <div className={styled['sm']}>
                             <a href="https://www.facebook.com/trongbinhnguyen15/">
-                                <i class="fab fa-facebook"></i>
+                                <i className="fab fa-facebook"></i>
                             </a>
                             <a href="https://www.linkedin.com/in/trongbinhnguyen15">
-                                <i class="fab fa-linkedin"></i>
+                                <i className="fab fa-linkedin"></i>
                             </a>
                             <a href="https://www.github.com/trongbinh15/">
-                                <i class="fab fa-github"></i>
+                                <i className="fab fa-github"></i>
                             </a>
                             <a href="https://www.instagram.com/trongbinh15/">
-                                <i class="fab fa-instagram"></i>
+                                <i className="fab fa-instagram"></i>
                             </a>
                         </div>
                         <div className={styled['buttons']}>

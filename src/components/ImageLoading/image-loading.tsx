@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import styled from './image-loading.module.scss';
 
-function ImageLoading({ src, alt, className }) {
+
+
+type ImgProp = {
+    src: string;
+    alt?: string;
+    className: string;
+}
+
+function ImageLoading(props: ImgProp) {
     const [loaded, setLoaded] = useState(false);
+    const { src, alt, className } = props;
 
     return (
         <>
-            <div className={styled['wrapper']}>
+            <div className='aha'>
                 <img
-                    src={src}
-                    alt={alt}
-                    className={`${styled['image']} 
-                    ${className}
-                 ${loaded ? styled['image-visible']
-                            : styled['image-hidden']}`}
+                    src={String(src)}
+                    alt={String(alt)}
+                    className={String( `${styled['image']} 
+                                ${className}
+                                ${loaded ? styled['image-visible']
+                                : styled['image-hidden']}` )}
                     onLoad={() => setLoaded(true)} />
 
                 {!loaded && (

@@ -13,7 +13,7 @@
     "baseUrl": "./src",
     "typeRoots": ["node_modules/@types", "src/typings"],
     "esModuleInterop": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

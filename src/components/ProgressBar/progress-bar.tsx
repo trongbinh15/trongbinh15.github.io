@@ -1,17 +1,28 @@
 import React from 'react';
 import styled from './progress-bar.module.scss';
-function ProgressBar({ name, value, color, className }) {
+
+
+interface PBProps {
+    name: string,
+    value: string,
+    color: string,
+    className: string
+};
+
+function ProgressBar(props: PBProps) {
+
+    const value = Number(props.value);
 
     const progressStyled = {
         width: value * 100 + '%',
-        'background-color': color,
-    }
+        'background-color': props.color,
+    };
 
     return (
         <>
-            <div className={`${styled['container']} ${className}`}>
+            <div className={`${styled['container']} ${props.className}`}>
                 <div className={styled['information']}>
-                    <span>{name}</span>
+                    <span>{props.name}</span>
                     <span>{value * 100}%</span>
                 </div>
                 <div className={styled['bar']} >

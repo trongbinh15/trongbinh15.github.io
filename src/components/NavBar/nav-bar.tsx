@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from './nav-bar-styles.module.scss';
 
-const NavBar = () => {
+const NavBar = (e: any) => {
     const [burgerClass, setBurgerClass] = useState(styled['burger']);
 
-    const toggleNavbar = (e) => {
+    const toggleNavbar = (e: any) => {
 
         if (burgerClass === styled['burger']) {
             setBurgerClass(`${styled['burger']} ${styled['toggle']}`)
@@ -14,7 +14,9 @@ const NavBar = () => {
 
         const nav = document.querySelector(`.${styled['nav-link']}`)
 
-        nav.classList.toggle(`${styled['nav-active']}`);
+        if(nav){
+            nav.classList.toggle(`${styled['nav-active']}`);
+        }
     }
 
     return (
