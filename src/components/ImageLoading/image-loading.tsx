@@ -15,19 +15,19 @@ function ImageLoading(props: ImgProp) {
 
     return (
         <>
-            <div className='aha'>
+            <div className='wrapper'>
                 <img
                     src={String(src)}
                     alt={String(alt)}
-                    className={String( `${styled['image']} 
+                    className={String( `${styled.image} 
                                 ${className}
-                                ${loaded ? styled['image-visible']
-                                : styled['image-hidden']}` )}
+                                ${loaded ? styled.imageVisible
+                                : styled.imageHidden}` )}
                     onLoad={() => setLoaded(true)} />
 
                 {!loaded && (
-                    <div className={styled['smooth-preloader']}>
-                        <span className={styled['loader']} />
+                    <div className={styled.smoothPreloader}>
+                        <span className={styled.loader} />
                     </div>
                 )}
             </div>
