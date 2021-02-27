@@ -18,8 +18,11 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
+        "react-hooks/rules-of-hook": "error",
+        "react-hooks/exhaustive-deps": "warn"
     }
 }
