@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from './image-loading.module.scss';
 
-
-
 type ImgProp = {
     src: string;
     alt?: string;

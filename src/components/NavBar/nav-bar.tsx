@@ -22,9 +22,6 @@ const NavBar = (e: any) => {
     return (
         <>
             <div className={styled.nav}>
-                <div className={styled.logo}>
-                    <h4>Logo</h4>
-                </div>
                 <ul className={styled.navLink}>
                     <li>
                         <a href="#home">Home</a>
