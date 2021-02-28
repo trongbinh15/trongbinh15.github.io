@@ -9,7 +9,7 @@ const ExperienceComponent = lazy(() => import('./components/Experience/experienc
 function App() {
   return (
     <>
-      <Suspense fallback={<Skeleton height={'100vh'} ></Skeleton>}>
+      <Suspense fallback='Loading...'>
         <section id="home">
           <HomeComponent />
         </section>

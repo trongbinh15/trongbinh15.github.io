@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: { 
-    index: './src/index.js',
+    index: './src/index.tsx',
   },
   output: {
     filename: '[name].[hash].js',
@@ -12,6 +12,10 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: ['ts-loader']
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -23,8 +27,17 @@ module.exports = {
         test: /\.s?css$/i,
         use: [
           'style-loader',
-          'css-loader',
-          'sass-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: "[local]--[hash:base64:5]",
+                localIdentContext: path.resolve(__dirname, "src"),
+                exportLocalsConvention: "camelCase",
+              }
+            }
+          },
+          'sass-loader'
         ],
       },
       {
@@ -35,6 +48,18 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
@@ -68,6 +93,6 @@ module.exports = {
     runtimeChunk: 'single',
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.tsx']
   }
 };
