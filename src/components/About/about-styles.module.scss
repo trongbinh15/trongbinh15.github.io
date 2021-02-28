@@ -1,0 +1,71 @@
+.container {
+    width: calc(100vw - 10px);
+    height: 100vh;
+    background-color: whitesmoke;
+
+    .inner-width {
+        width: 100%;
+        .content {
+            position: relative;
+            display: grid;
+            width: 80%;
+            align-items: center;
+            margin: 0 auto; //trick
+            grid-auto-rows: minmax(100px, auto);
+            grid-template-columns: repeat(4, 25%);
+            grid-template-areas: "a a a a"
+            "b c c c"
+            "b d d d"
+            "e e e e";
+
+            h1 {
+                grid-area: a;
+                justify-self: center;
+                align-self: center;
+            }
+
+            h2 {
+                grid-area: c;
+            }
+
+            p {
+                grid-area: d;
+            }
+
+            .skills {
+                margin-top: 20px;
+                grid-area: e;
+                display: flex;
+                flex-flow: row wrap;
+                flex-grow: 2;
+                justify-content: space-between;
+                padding-left: 40px;
+
+                .bar {
+                    margin: 5px;
+                    width: 500px;
+                }
+            }
+
+
+            .avatar {
+                grid-area: b;
+                justify-self: center;
+
+                &-img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    border-radius: 30px;
+                }
+            }
+        }
+
+        .a {
+            font-weight: 900;
+            height: 100px;
+        }
+
+    }
+
+}

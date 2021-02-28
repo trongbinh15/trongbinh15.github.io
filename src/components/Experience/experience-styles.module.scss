@@ -1,0 +1,134 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import '../../Variables.scss';
+
+.container {
+    width: calc(100vw - 10px);
+    background-color: #fff;
+
+    .inner-width {
+        width: 100%;
+        .content {
+            h1 {
+                text-align: center;
+                padding-top: 30px;
+            }
+
+            .timeline {
+                position: relative;
+                margin: 50px auto;
+                width: 100%;
+                padding: 20px 0;
+                box-sizing: border-box;
+
+                &::before {
+                    // line
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    width: 2px;
+                    height: 100%;
+                    background-color: #c5c5c5;
+                }
+
+                ul {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        list-style: none;
+                        position: relative;
+                        width: 50%;
+                        padding: 20px 40px;
+                        box-sizing: border-box;
+
+                        &:nth-child(odd) {
+                            float: left;
+                            text-align: right;
+                            clear: both;
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: 24px;
+                                right: -6px;
+                                width: 10px;
+                                height: 10px;
+                                background: $primary-color;
+                                border-radius: 50%;
+                                box-shadow: 0 0 0 3px lighten($color: $primary-color, $amount: 30%);
+                            }
+
+                            .time{
+                                position: absolute;
+                                top: 12px;
+                                right: -165px;
+                                margin: 0;
+                                padding: 8px 16px;
+                                background: $primary-color;
+                                color: #fff;
+                                border-radius: 18px;
+                                box-shadow: 0 0 0 3px lighten($color: $primary-color, $amount: 20%);
+                            }
+                        }
+
+                        &:nth-child(even) {
+                            float: right;
+                            text-align: left;
+                            clear: both;
+
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: 24px;
+                                left: -4px;
+                                width: 10px;
+                                height: 10px;
+                                background: $primary-color;
+                                border-radius: 50%;
+                                box-shadow: 0 0 0 3px lighten($color: $primary-color, $amount: 30%);
+                            }
+
+                            .time{
+                                position: absolute;
+                                top: 12px;
+                                left: -165px;
+                                margin: 0;
+                                padding: 8px 16px;
+                                background: $primary-color;
+                                color: #fff;
+                                border-radius: 18px;
+                                box-shadow: 0 0 0 3px lighten($color: $primary-color, $amount: 20%);
+                            }
+                        }
+
+                        h3 {
+                            margin: 0;
+                            padding: 0;
+                            font-weight: 600;
+                            color: $primary-color;
+                        }
+                        p{
+                            margin: 10px 0 0;
+                            padding:0;
+                            font-size: 14px;
+                        }
+
+                        .time{
+                            h4{
+                                margin: 0;
+                                padding: 0;
+                            }
+                        }
+
+                        .description {
+                            padding-bottom: 20px;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+}

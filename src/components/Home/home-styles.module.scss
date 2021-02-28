@@ -1,0 +1,92 @@
+@import '../../Variables.scss';
+
+.container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: calc(100vw - 10px);
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        height: 100vh;
+        width: 100%;
+        z-index: -1;
+        filter: brightness(50%);
+    }
+
+    .inner-width {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+    }
+
+    .content {
+        width: 100%;
+        color: #fff;
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 60px;
+
+            &::after {
+                content: 'Nguyen Trong Binh';
+                animation: textanim 10s linear infinite;
+            }
+        }
+    }
+
+    .sm {
+        a {
+            color: #fff;
+            font-size: 22px;
+            margin: 0 10px;
+            transition: .2s linear;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .buttons {
+        margin-top: 60px;
+
+        button {
+            margin: 15px 30px;
+            color: $primary-color;
+            width: 180px;
+            border: 1px solid $primary-color;
+            border-radius: 6px;
+            transition: .2s linear;
+            font-size: 14px;
+            padding: 14px;
+            font-weight: 700;
+
+            &:hover {
+                background-color: $primary-color;
+                color: #fff;
+            }
+        }
+
+    }
+}
+
+@keyframes textanim {
+    25% {
+        content: "Normal Guy";
+    }
+
+    50% {
+        content: "Fullstack Developer";
+    }
+
+    75% {
+        content: "Nice to meet you :D";
+    }
+}
