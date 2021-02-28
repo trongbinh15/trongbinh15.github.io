@@ -4,6 +4,7 @@ on:
         branches: 
             - master
     pull_request:
+        types: [opened]
         branches: 
             - master
 jobs:
@@ -15,6 +16,17 @@ jobs:
             - uses: actions/setup-node@v1
             - run: npm ci 
             - run: npm run build:prod 
+
+name: CI
+on: 
+    push:
+        branches: 
+            - master
+    pull_request:
+        types: [closed]
+        branches: 
+            - master
+jobs:
     deploy:
         runs-on: ubuntu-latest
         name: Deploy Github Page
