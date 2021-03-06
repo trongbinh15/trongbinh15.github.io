@@ -15,19 +15,19 @@ function ProgressBar(props: PBProps) {
 
     const progressStyled = {
         width: value * 100 + '%',
-        'background-color': props.color,
+        'backgroundColor': props.color,
     };
 
     return (
         <>
-            <div className={`${styled['container']} ${props.className}`}>
-                <div className={styled['information']}>
+            <div className={`${styled.container} ${props.className}`}>
+                <div className={styled.information}>
                     <span>{props.name}</span>
                     <span>{value * 100}%</span>
                 </div>
-                <div className={styled['bar']} >
-                    <div className={styled['full']}></div>
-                    <div className={styled['progress']} style={progressStyled}></div>
+                <div className={styled.bar} >
+                    <div className={styled.full}></div>
+                    <div className={styled.progress} style={progressStyled}></div>
                 </div>
             </div>
         </>
