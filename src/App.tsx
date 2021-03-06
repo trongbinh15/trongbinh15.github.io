@@ -7,34 +7,42 @@ import ErrorScreen from './components/ErrorBoundary/ErrorScreen';
 const HomeComponent = lazy(() => import('./components/Home/home'));
 const AboutComponent = lazy(() => import('./components/About/about'));
 const ExperienceComponent = lazy(() => import('./components/Experience/experience'));
+const ContactComponent = lazy(() => import('./components/Contact/contact'));
 
 function App() {
   return (
     <>
-        <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
-          <section id="home">
-            <ErrorBoundary Fallback={ErrorScreen}>
-              <HomeComponent />
-            </ErrorBoundary>
-          </section>
-        </Suspense>
-      {/* <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}> */}
-      {/*   <section id="home"> */}
-      {/*     <HomeComponent /> */}
-      {/*   </section> */}
-      {/* </Suspense> */}
+      <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
+        <section id="home">
+          <ErrorBoundary Fallback={ErrorScreen}>
+            <HomeComponent />
+          </ErrorBoundary>
+        </section>
+      </Suspense>
       <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
         <section id="about">
-          <AboutComponent />
+          <ErrorBoundary Fallback={ErrorScreen}>
+            <AboutComponent />
+          </ErrorBoundary>
         </section>
       </Suspense>
       <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
         <section id="experiences">
-          <ExperienceComponent />
+          <ErrorBoundary Fallback={ErrorScreen}>
+            <ExperienceComponent />
+          </ErrorBoundary>
         </section>
       </Suspense>
+
       <section id="interest"></section>
-      <section id="contact"></section>
+
+      <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
+        <section id="contact">
+          <ErrorBoundary Fallback={ErrorScreen}>
+            <ContactComponent />
+          </ErrorBoundary>
+        </section>
+      </Suspense>
       <footer></footer>
     </>
   );
