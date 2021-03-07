@@ -1,6 +1,9 @@
 import {useFormik} from 'formik';
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from './contact-styles.module.scss';
+import emailjs from 'emailjs-com';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type IFormData = {
   name?: string;
@@ -10,6 +13,7 @@ type IFormData = {
 }
 
 function ContactComponent () {
+
   const validate = (values: IFormData) => {
     const errors: IFormData = {};
 
@@ -41,13 +45,32 @@ function ContactComponent () {
     },
     validate,
     onSubmit: (value) => {
-      console.log(JSON.stringify(value));
+
+      const emailTemplate = {
+        'to_name': 'Binh Nguyen',
+        'from_name': value.name,
+        'from_email': value.email,
+        'from_phone': value.phone,
+        'message': value.message
+      }
+
+      emailjs.send('service_vqlexcm', 'template_qig2iqc', emailTemplate, 'user_MAu2IyHtKVhXy1pAJKFzV')
+      .then(() => {
+          toast.success('Success!');
+      }, (error) => {
+          toast.error('Something went wrong!\n Please try again later!');
+      });
     },
   });
+
+  useEffect(()=> {
+    (document.getElementById("submit_btn") as HTMLInputElement).disabled = !(form.isValid);
+  })
 
   return (
     <>
       <div className={styled.container}>
+        <ToastContainer/>
         <div className={styled.innerWidth}>
           <div className={styled.content}>
             <h1>Say Hi</h1>
@@ -128,7 +151,7 @@ function ContactComponent () {
                   </div>
                 </div>
                 <div className={styled.actions}>
-                  <button type="submit">SEND</button>
+                  <button type="submit" id='submit_btn' disabled>SEND</button>
                 </div>
               </form>
             </div>
