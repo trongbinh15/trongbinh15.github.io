@@ -4,5 +4,8 @@ export const avatarImg: string;
 export const bar: string;
 export const container: string;
 export const content: string;
+export const darkColor: string;
 export const innerWidth: string;
+export const primaryColor: string;
 export const skills: string;
+export const successColor: string;

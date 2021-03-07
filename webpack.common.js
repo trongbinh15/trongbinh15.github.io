@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: { 
@@ -26,7 +27,7 @@ module.exports = {
       {
         test: /\.s?css$/i,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -34,6 +35,7 @@ module.exports = {
                 localIdentName: "[local]--[hash:base64:5]",
                 localIdentContext: path.resolve(__dirname, "src"),
                 exportLocalsConvention: "camelCase",
+                auto: true
               }
             }
           },
@@ -69,6 +71,9 @@ module.exports = {
       filename: "./index.html",
       title: "My Portfolio",
       inject: "body"
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
     })
   ],
   optimization: {
