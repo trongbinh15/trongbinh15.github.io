@@ -22,23 +22,25 @@ const NavBar = (e: any) => {
     return (
         <>
             <div className={styled.nav}>
-                <ul className={styled.navLink}>
-                    <li>
-                        <a href="#home">Home</a>
-                    </li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#experiences">Experiences</a>
-                    </li>
-                    <li>
-                        <a href="#interest">Interest</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
+                <div className={styled.navLink}>
+                    <ul>
+                        <li>
+                            <a href="#home" onClick={e => toggleNavbar(e)}>Home</a>
+                        </li>
+                        <li>
+                            <a href="#about" onClick={e => toggleNavbar(e)}>About</a>
+                        </li>
+                        <li>
+                            <a href="#experiences" onClick={e => toggleNavbar(e)}>Experiences</a>
+                        </li>
+                        <li>
+                            <a href="#interest" onClick={e => toggleNavbar(e)}>Interest</a>
+                        </li>
+                        <li>
+                            <a href="#contact" onClick={e => toggleNavbar(e)}>Contact</a>
+                        </li>
+                    </ul>
+                </div>
                 <div className={burgerClass} onClick={e => toggleNavbar(e)}  >
                     <div className={styled.line1}></div>
                     <div className={styled.line2}></div>

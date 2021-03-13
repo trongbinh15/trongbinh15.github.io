@@ -1,37 +1,41 @@
 @import  '../../Variables.scss';
 
 .container {
-    width: calc(100vw - 10px);
-    height: 100vh;
+    width: 100vw;
     background-color: whitesmoke;
+    padding-bottom: 20px;
 
     .inner-width {
         width: 100%;
+        padding: 0 10px;
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding-top: 20px;
+        }
         .content {
             position: relative;
             display: grid;
-            width: 80%;
             align-items: center;
             margin: 0 auto; //trick
-            grid-auto-rows: minmax(100px, auto);
-            grid-template-columns: repeat(4, 25%);
-            grid-template-areas: "a a a a"
+            grid-auto-rows: minmax(auto, auto);
+            grid-template-columns: repeat(4, auto);
+            grid-template-areas:
             "b c c c"
             "b d d d"
             "e e e e";
 
-            h1 {
-                grid-area: a;
-                justify-self: center;
-                align-self: center;
-            }
-
             h2 {
                 grid-area: c;
+                max-width: 85vw;
+                font-style: italic;
             }
 
             p {
                 grid-area: d;
+                max-width: 80%;
             }
 
             .skills {
@@ -39,20 +43,19 @@
                 grid-area: e;
                 display: flex;
                 flex-flow: row wrap;
-                flex-grow: 2;
+                max-width: 85vw;
                 justify-content: space-between;
-                padding-left: 40px;
-
                 .bar {
-                    margin: 5px;
-                    width: 500px;
+                    margin: 10px;
+                    max-width: 80vw;
+                    min-width: 250px;
                 }
             }
 
 
             .avatar {
                 grid-area: b;
-                justify-self: center;
+                padding: 20px;
 
                 &-img {
                     width: 200px;
@@ -61,7 +64,17 @@
                     border-radius: 30px;
                 }
             }
+
+            @media screen and (max-width: 768px) {
+                grid-template-columns: repeat(1, auto);
+                grid-template-areas:
+                "c"
+                "b"
+                "d"
+                "e";
+            }
         }
+
 
         .a {
             font-weight: 900;
