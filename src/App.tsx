@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react';
-import './App.css';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
+import './App.scss';
 import Skeleton from 'react-loading-skeleton';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import ErrorScreen from './components/ErrorBoundary/ErrorScreen';
@@ -10,23 +10,54 @@ const ExperienceComponent = lazy(() => import('./components/Experience/experienc
 const ContactComponent = lazy(() => import('./components/Contact/contact'));
 
 function App() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 900) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+
   return (
     <>
-      <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
+      {isVisible && (
+        <div className="scroll-to-top" onClick={scrollToTop}>
+          <i className="fa fa-arrow-up" aria-hidden="true" 
+          ></i>
+        </div>
+      )}
+
+      <Suspense fallback={<Skeleton height={"100vh"}></Skeleton>}>
         <section id="home">
           <ErrorBoundary Fallback={ErrorScreen}>
             <HomeComponent />
           </ErrorBoundary>
         </section>
       </Suspense>
-      <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
+      <Suspense fallback={<Skeleton height={"100vh"}></Skeleton>}>
         <section id="about">
           <ErrorBoundary Fallback={ErrorScreen}>
             <AboutComponent />
           </ErrorBoundary>
         </section>
       </Suspense>
-      <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
+      <Suspense fallback={<Skeleton height={"100vh"}></Skeleton>}>
         <section id="experiences">
           <ErrorBoundary Fallback={ErrorScreen}>
             <ExperienceComponent />
@@ -36,7 +67,7 @@ function App() {
 
       <section id="interest"></section>
 
-      <Suspense fallback={<Skeleton height={'100vh'}></Skeleton>}>
+      <Suspense fallback={<Skeleton height={"100vh"}></Skeleton>}>
         <section id="contact">
           <ErrorBoundary Fallback={ErrorScreen}>
             <ContactComponent />
