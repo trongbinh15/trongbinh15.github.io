@@ -166,3 +166,14 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .container{
+        .inner-width{
+            .content{
+                .form{
+                    width: 100%;
+                }
+            }
+        }
+}}
