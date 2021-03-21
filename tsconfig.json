@@ -9,6 +9,7 @@
     "rootDir": "./",
     "isolatedModules": true,
     "strict": true,
+    "strictNullChecks": false,
     "moduleResolution": "node",
     "baseUrl": "./src",
     "typeRoots": ["node_modules/@types", "src/typings"],
