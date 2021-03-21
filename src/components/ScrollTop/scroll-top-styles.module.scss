@@ -1,0 +1,23 @@
+@import '../../Variables.scss';
+
+.scroll-to-top {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  cursor: pointer;
+  bottom: 2%;
+  right: 2%;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  background-color: lighten($color: $primary-color, $amount: 35%);
+  transition: all 0.5s ease;
+  &:hover{
+    background-color: $primary-color;
+  }
+  i{
+    line-height: 50px;
+    color: white;
+  }
+}
