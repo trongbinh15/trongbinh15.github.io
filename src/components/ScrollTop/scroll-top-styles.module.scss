@@ -10,6 +10,7 @@
   right: 2%;
   display: flex;
   z-index: 1;
+  box-shadow: 0px 10px 10px -8px rgb(0 0 0 / 30%);
   justify-content: center;
   background-color: lighten($color: $primary-color, $amount: 35%);
   transition: all 0.5s ease;

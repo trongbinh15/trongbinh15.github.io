@@ -1,7 +1,5 @@
 import React, { lazy } from 'react';
 import styled from './home-styles.module.scss';
-import background from '../../asset/images/pexels-pixabay-373076.jpg';
-import ImageLoading from '../ImageLoading/image-loading';
 
 const NavBar = lazy(() => import('../NavBar/nav-bar'));
 
@@ -10,10 +8,9 @@ function HomeComponent() {
         <>
             <div className={styled.container}>
                 <NavBar />
-                <ImageLoading src={background} className={styled.background} />
                 <div className={styled.innerWidth}>
                     <div className={styled.content}>
-                        <h1> </h1>
+                        <div className={styled.header}> </div>
                         <div className={styled.sm}>
                             <a href="https://www.facebook.com/trongbinhnguyen15/">
                                 <i className="fab fa-facebook"></i>
@@ -29,8 +26,14 @@ function HomeComponent() {
                             </a>
                         </div>
                         <div className={styled.buttons}>
-                            <button>Contact Me</button>
-                            <button>Download CV</button>
+                            <button>
+                                <a href="#contact">
+                                    Contact Me
+                                </a>
+                            </button>
+                            <button>
+                                <a>Download CV</a>
+                            </button>
                         </div>
                     </div>
                 </div>

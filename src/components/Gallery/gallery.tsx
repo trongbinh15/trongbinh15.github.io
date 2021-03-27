@@ -1,22 +1,48 @@
 import LazyImage from '../LazyImage/lazy-image';
-import React, { useEffect, useState } from 'react';
-import img1 from '../../asset/images/1.jpg';
-import img2 from '../../asset/images/2.jpg';
-import img3 from '../../asset/images/3.jpg';
-import img4 from '../../asset/images/4.jpg';
-import img5 from '../../asset/images/pexels-bongkarn-thanyakij-3740312.jpg';
-import img6 from '../../asset/images/pexels-pixabay-373076.jpg';
+import React, { lazy, useEffect, useRef, useState } from 'react';
 import placeHolder from '../../asset/images/placeholder.png';
 import styled from './galley-styles.module.scss'
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Module } from "webpack";
+
+
+type IImage = {
+  src: string;
+  thumbnail: string;
+  alt: string;
+}
 
 function GalleryComponent(){
   const [loaded, setLoaded] = useState(false);
+  const [images, setImages] = useState([]);
+  const [thumbnails, setThumbnails] = useState([]);
+  const [alts, setAlts] = useState([]);
+
+  const myModal = useRef(null);
+  const imgModal = useRef(null);
+  const caption = useRef(null);
+
+  function importAll(r: any) {
+    return r.keys().map(r);
+  }
+
   const imgStyle = {
     'max-width': '300px',
     'height': 'auto',
-    'border-radius': '50px'
+    'border-radius': '5px'
   };
+
+  useEffect(() => {
+    const images = importAll(require.context('../../asset/images/original', false, /\.(png|jpe?g|svg)$/));
+    const thumbnails = importAll(require.context('../../asset/images/thumbnail', false, /\.(png|jpe?g|svg)$/));
+
+    setThumbnails(
+      thumbnails.map((x: any)=> x.default).sort()
+    );
+    setImages(
+      images.map((x: any) => x.default).sort()
+    );
+  }, []);
 
   const onLoad = ()=> setLoaded(true);
 
@@ -26,84 +52,46 @@ function GalleryComponent(){
     img.onload = onLoad;
   }, [])
 
+  const onClick =(src: string, alt: string)=> {
+    myModal.current.style.display='block';
+    imgModal.current.src = src;
+    caption.current.innerHTML = alt ? alt : '';
+  }
+
+  const onClose = () => {
+    myModal.current.style.display = 'none';
+  }
+
   return (
     <>
-      <div className={styled.back}>
-        <Link to="/"><i className="fa fa-reply-all" aria-hidden="true"></i></Link>
+      <div className={styled.header}>
+        <Link to="/">
+          <div className={styled.back}>
+            <i className="fa fa-reply-all" aria-hidden="true"></i>
+          </div>
+        </Link>
+        <h1>Gallery</h1>
       </div>
+      
       {loaded && 
       <div className={styled.container}>
-        <LazyImage
-          src={img1}
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src={img2}
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src={img6}
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src={img3}
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src={img4}
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src={img5}
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?cs=srgb&dl=pexels-james-wheeler-1619317.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?cs=srgb&dl=pexels-pok-rie-132037.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/1476880/pexels-photo-1476880.jpeg?cs=srgb&dl=pexels-nextvoyage-1476880.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/2082949/pexels-photo-2082949.jpeg?cs=srgb&dl=pexels-alexandr-podvalny-2082949.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/1576667/pexels-photo-1576667.jpeg?cs=srgb&dl=pexels-baskin-creative-studios-1576667.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?cs=srgb&dl=pexels-martin-damboldt-814499.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/1559821/pexels-photo-1559821.jpeg?cs=srgb&dl=pexels-tobias-bj%C3%B8rkli-1559821.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/592077/pexels-photo-592077.jpeg?cs=srgb&dl=pexels-katja-592077.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?cs=srgb&dl=pexels-pixabay-36717.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/1327373/pexels-photo-1327373.jpeg?cs=srgb&dl=pexels-alex-blokstra-1327373.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-        <LazyImage
-          src='https://images.pexels.com/photos/2433467/pexels-photo-2433467.jpeg?cs=srgb&dl=pexels-casia-charlie-2433467.jpg&fm=jpg'
-          styles={imgStyle}
-        ></LazyImage>
-
+        <div className={styled.columns}>
+          {thumbnails.map((thumb, index) => 
+            <LazyImage 
+              key={index} 
+              src={images[index]}  
+              thumbnail={thumb}
+              styles={imgStyle} 
+              alt='Nguyen trong binh' 
+              onClick={onClick}/>
+          )}
+        </div>
       </div>}
-      
+      <div ref={myModal} className={styled.modal}>
+        <span className={styled.close}><i className="fa fa-times" aria-hidden="true" onClick={onClose}></i></span>
+        <img className={styled.modalContent} ref={imgModal}/>
+        <div className={styled.caption} ref={caption}></div>
+      </div> 
     </>
   );
 }

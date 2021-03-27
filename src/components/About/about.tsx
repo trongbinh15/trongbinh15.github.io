@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from './about-styles.module.scss';
 import ProgressBar from '../ProgressBar/progress-bar';
-import ImageLoading from '../ImageLoading/image-loading';
 
-function AboutComponent() {
+function AboutComponent({title, backgroundColor}: any) {
     return (
         <>
-            <div className={styled.container}>
+            <div className={styled.container} style={{ backgroundColor: backgroundColor }}>
                 <div className={styled.innerWidth}>
-                    <h1>About</h1>
                     <div className={styled.content}>
                         <div className={styled.avatar}>
-                            <ImageLoading src='https://images.pexels.com/photos/192384/pexels-photo-192384.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' className={styled.avatarImg} />
                         </div>
                         <h2>Hi, I'm a Fullstack Developer</h2>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed fuga eaque, culpa cupiditate animi laborum natus! Similique odio sit facilis dolorum dicta velit provident sequi iusto, est pariatur quisquam corrupti animi necessitatibus aliquid deserunt reprehenderit voluptatibus? Exercitationem deserunt fugit dicta nesciunt velit quae tempora eius praesentium odio est, voluptatem vero incidunt omnis ad iure, soluta maiores nostrum inventore alias culpa. Nihil suscipit possimus est harum accusamus impedit libero deleniti repellat.</p>

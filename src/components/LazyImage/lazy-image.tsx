@@ -5,24 +5,26 @@ import placeHolder from '../../asset/images/placeholder.png'
 
 type ImgProp = {
     src: string;
+    thumbnail?: string;
     alt?: string;
     width?: number;
     height?: number;
     styles?: any;
     className?: string;
+    onClick?: any;
 }
 
-function LazyImage({ src, height, width, styles }: ImgProp) {
+function LazyImage({ src, thumbnail, height, width, alt, styles, onClick }: ImgProp) {
     const [isVisible, setIsVisible] = useState(false);
     const [imgSrc, setSrc] = useState(placeHolder);
-    const ref = useRef();
+    const imgRef = useRef(null);
 
     useIntersectionObserver({
-        target: ref,
+        target: imgRef,
         onIntersect: ([entry]: IntersectionObserverEntry[], element: any) => {
               if (entry.isIntersecting) {
                   setIsVisible(true);
-                  element.unobserve(ref.current)
+                  element.unobserve(imgRef.current)
               }
         },
         threshold: 0.4,
@@ -30,25 +32,27 @@ function LazyImage({ src, height, width, styles }: ImgProp) {
 
     useEffect(() => {
         if (isVisible) {
-            setSrc(src);
+            setSrc(thumbnail ? thumbnail : src);
         }
     }, [isVisible, src])
 
-    useEffect(() => {
-        const img = new Image();
-        img.src = imgSrc;
-    }, []);
+
+    const handleClick =()=> {
+        onClick(src, alt);
+    }
 
     return (
         <>
-            <img
-                className={styled.img}
-                src={imgSrc}
-                ref={ref}
-                style={styles}
-                height={height}
-                width={width}
+            <div className={styled.container}>
+                <img
+                    src={imgSrc}
+                    ref={imgRef}
+                    style={styles}
+                    height={height}
+                    onClick={handleClick}
+                    width={width}
                 />
+                </div>
         </>
     );
 }
