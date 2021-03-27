@@ -3,6 +3,7 @@ export const buttons: string;
 export const container: string;
 export const content: string;
 export const darkColor: string;
+export const header: string;
 export const innerWidth: string;
 export const primaryColor: string;
 export const sm: string;

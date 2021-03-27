@@ -4,24 +4,24 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: { 
-    index: './src/index.tsx',
+  entry: {
+    index: "./src/index.tsx",
   },
   output: {
-    filename: '[name].[hash].js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['ts-loader']
+        use: ["ts-loader"],
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: "babel-loader",
         },
       },
       {
@@ -29,24 +29,28 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: {
                 localIdentName: "[local]--[hash:base64:5]",
                 localIdentContext: path.resolve(__dirname, "src"),
                 exportLocalsConvention: "camelCase",
-                auto: true
-              }
-            }
+                auto: true,
+              },
+            },
           },
-          'sass-loader'
+          "sass-loader",
         ],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash].[ext]",
+              outputPath: "images/",
+            },
           },
         ],
       },
@@ -54,54 +58,54 @@ module.exports = {
         test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/'
-            }
-          }
-        ]
+              name: "[name].[ext]",
+              outputPath: "fonts/",
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
-    ]
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
+      favicon:
+        "./src/asset/ico/superhero_ironman_comic_hero_icon-icons.com_69235.ico",
       title: "My Portfolio",
-      inject: "body"
+      inject: "body",
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
-    })
+    }),
   ],
   optimization: {
-    moduleIds: 'hashed',
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-          priority: 20
-        },
-        common: {
-          test: /[\\/]src[\\/]components[\\/]/,
-          chunks: "all",
-          reuseExistingChunk: true,
-          minSize: 0,
-          priority: 10
-        }
-      },
+      chunks: "all",
+      minSize: 1000 * 600,
+      // cacheGroups: {
+      //   vendor: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: 'vendors',
+      //     reuseExistingChunk: true,
+      //     priority: -10
+      //   },
+      //   // common: {
+      //   //   name: "components",
+      //   //   test: /[\\/]components[\\/]/,
+      //   //   enforce: true
+      //   // },
+      // },
     },
-    runtimeChunk: 'single',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.tsx']
-  }
+    extensions: [".js", ".jsx", ".tsx"],
+  },
 };

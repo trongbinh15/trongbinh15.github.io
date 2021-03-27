@@ -2,23 +2,20 @@ import React, {useEffect, useRef, useState} from 'react';
 import styled from './interest-styles.module.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import img1 from '../../asset/images/1.jpg'
-import img2 from '../../asset/images/2.jpg'
-import img3 from '../../asset/images/3.jpg'
-import img4 from '../../asset/images/4.jpg'
+import img1 from '../../asset/images/thumbnail/1.jpg'
+import img2 from '../../asset/images/thumbnail/2.jpg'
+import img3 from '../../asset/images/thumbnail/3.jpg'
+import img4 from '../../asset/images/thumbnail/4.jpg'
 import { withRouter} from 'react-router-dom';
 
 
 function InterestComponent (props: any){
   const handleDragStart = (e: any) => e.preventDefault();
-
-  useEffect(()=> console.log(props));
   return (
     <>
       <div className={styled.container}>
         <div className={styled.innerWidth}>
           <div className={styled.content}>
-            <h1>Interest</h1>
             <div className={styled.slider}>
               <div className={styled.carouselContainer}>
                 <div className={styled.carousel}>
@@ -35,7 +32,7 @@ function InterestComponent (props: any){
                     </div>
                     <div className={styled.more}>
                       <div className={styled.text} onClick={()=> props.history.push('/gallery')}>
-                        <p>View more</p>
+                        <p>View more ...</p>
                       </div> 
                     </div>
                   </Carousel>

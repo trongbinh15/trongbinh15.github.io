@@ -37,6 +37,9 @@ const NavBar = (e: any) => {
                             <a href="#interest" onClick={e => toggleNavbar(e)}>Interest</a>
                         </li>
                         <li>
+                            <a href="#gallery" onClick={e => toggleNavbar(e)}>Gallery</a>
+                        </li>
+                        <li>
                             <a href="#contact" onClick={e => toggleNavbar(e)}>Contact</a>
                         </li>
                     </ul>

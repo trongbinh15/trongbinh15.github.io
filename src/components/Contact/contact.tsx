@@ -1,8 +1,7 @@
 import {useFormik} from 'formik';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from './contact-styles.module.scss';
 import emailjs from 'emailjs-com';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type IFormData = {
@@ -15,6 +14,7 @@ type IFormData = {
 function ContactComponent () {
 
   const [loading, setLoading] = useState(false);
+  const btnRef = useRef(null);
 
   useEffect(()=> {
     (document.getElementById("submit_btn") as HTMLInputElement).disabled = !form.isValid || loading;
@@ -51,7 +51,6 @@ function ContactComponent () {
     },
     validate,
     onSubmit: (value) => {
-
       if (loading) {
         return;
       }
@@ -76,11 +75,19 @@ function ContactComponent () {
       .finally(() => setLoading(false))
       .then(
         () => {
-          toast.success("Success!");
+          btnRef.current.innerText  = 'Success!';
+          setTimeout(() => {
+            btnRef.current.innerText = 'Send Email';
+          }, 2000);
+
           form.resetForm();
         },
         () => {
-          toast.error("Something went wrong!\n Please try again later!");
+          btnRef.current.innerText = 'Fail!'
+
+          setTimeout(() => {
+            btnRef.current.innerText = 'Send Email';
+          }, 2000);
         }
       );
     },
@@ -90,10 +97,8 @@ function ContactComponent () {
   return (
     <>
       <div className={styled.container}>
-        <ToastContainer/>
         <div className={styled.innerWidth}>
           <div className={styled.content}>
-            <h1>Say Hi</h1>
             <div className={styled.form}>
               <form onSubmit={form.handleSubmit}>
                 <div className={styled.group}>
@@ -171,7 +176,7 @@ function ContactComponent () {
                   </div>
                 </div>
                 <div className={styled.actions}>
-                  <button type="submit" id='submit_btn' disabled>
+                  <button ref={btnRef} type="submit" id='submit_btn' disabled>
                     {loading ? <a className={styled.loader}></a>: <a>Send Email</a>}
                   </button>
                 </div>

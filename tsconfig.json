@@ -2,11 +2,12 @@
   "compileOnSave": true,
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "esnext",
     "allowJs": true,
     "jsx": "react",
     "outDir": "./dist",
     "rootDir": "./",
+    "removeComments": false,
     "isolatedModules": true,
     "strict": true,
     "strictNullChecks": false,

@@ -7,7 +7,6 @@ function ExperienceComponent() {
             <div className={styled.container}>
                 <div className={styled.innerWidth}>
                     <div className={styled.content}>
-                        <h1>Experiences</h1>
                         <div className={styled.timeline}>
                             <ul>
                                 <li>
