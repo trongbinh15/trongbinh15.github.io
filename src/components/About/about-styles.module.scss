@@ -2,7 +2,7 @@
 
 .container {
     width: 100vw;
-    padding-bottom: 20px;
+    padding: 20px;
     min-height: 100vh;
 
     .inner-width {
@@ -26,18 +26,74 @@
                 font-style: italic;
             }
 
-            p {
+            .slash {
                 grid-area: d;
                 max-width: 80%;
+                padding: 20px;
             }
 
             .skills {
                 margin-top: 20px;
                 grid-area: e;
                 display: flex;
-                flex-flow: row wrap;
-                max-width: 85vw;
+                padding: 20px;
+                flex-direction: column;
                 justify-content: space-between;
+
+                .sub{
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                }
+
+                &-detail{
+                    display: flex;
+                    flex-direction: row;
+                    .highlight{
+                        width: 40%;
+                    }
+
+                    .tech{
+                        .tags{
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            max-width: 300px;
+
+                            .tag {
+                                list-style: none;
+                                border: 1px solid transparent;
+                                background-color: $primary-color;
+                                width: fit-content;
+                                color: white;
+                                font-size: 0.8rem;
+                                padding: 2px 4px;
+                                margin: 2px;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+
+                @media screen and (max-width: 768px) {
+                    .skills{
+                        &-detail{
+                            flex-direction: column;
+                            .highlight{
+                                width: 50%;
+                            }
+                            .tech{
+                                max-width: 50%;
+                                .tags{
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
                 .bar {
                     margin: 10px;
                     max-width: 80vw;
@@ -45,12 +101,11 @@
                 }
             }
 
-
             .avatar {
                 grid-area: b;
                 padding: 20px;
 
-                &-img {
+                img {
                     width: 200px;
                     height: 200px;
                     object-fit: cover;

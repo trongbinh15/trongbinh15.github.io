@@ -10,6 +10,10 @@ const ExperienceComponent = lazy(() => import(/* webpackChunkName: "experience" 
 const ContactComponent = lazy(() => import(/* webpackChunkName: "contact" */'./components/Contact/contact'));
 const InterestComponent = lazy(() => import(  /* webpackChunkName: "interest" */  './components/Interest/interest'));
 const GalleryComponent = lazy(() => import(/* webpackChunkName: "gallery" */'./components/Gallery/gallery'));
+const ProjectComponent = lazy(() => import(/* webpackChunkName: "project" */'./components/Projects/project'));
+const DDSPrj = lazy(() => import(/* webpackChunkName: "dds" */'./components/Projects/dds/dds'));
+const EbiquityPrj = lazy(() => import(/* webpackChunkName: "ebiquity" */'./components/Projects/ebiquity/ebiquity'));
+const PortfolioPrj = lazy(() => import(/* webpackChunkName: "portfolio" */'./components/Projects/portfolio/portfolio'));
 
 function App() {
   return (
@@ -22,6 +26,25 @@ function App() {
               <GalleryComponent />
             </Container>
           </Route>
+
+          <Route exact path='/project/dds'>
+            <Container>
+              <DDSPrj/>
+            </Container>
+          </Route>
+
+          <Route exact path='/project/ebiquity'>
+            <Container>
+              <EbiquityPrj/>
+            </Container>
+          </Route>
+
+          <Route exact path='/project/portfolio'>
+            <Container>
+              <PortfolioPrj/>
+            </Container>
+          </Route>
+
           <Route path="/">
             <section id="home">
               <Container>
@@ -30,7 +53,7 @@ function App() {
             </section>
 
             <section id="about">
-              <Container {...{ title:'About', backgroundColor:'whitesmoke'}}>
+              <Container {...{ title:'About Me', backgroundColor:'whitesmoke'}}>
                 <AboutComponent />
               </Container>
             </section>
@@ -38,6 +61,12 @@ function App() {
             <section id="experiences">
               <Container {...{ title:'Experience', backgroundColor:'white'}}>
                 <ExperienceComponent />
+              </Container>
+            </section>
+
+            <section id="project">
+              <Container {...{ title:'Projects', backgroundColor:'white'}}>
+                <ProjectComponent />
               </Container>
             </section>
 

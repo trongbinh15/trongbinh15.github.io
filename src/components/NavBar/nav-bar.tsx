@@ -34,6 +34,9 @@ const NavBar = (e: any) => {
                             <a href="#experiences" onClick={e => toggleNavbar(e)}>Experiences</a>
                         </li>
                         <li>
+                            <a href="#project" onClick={e => toggleNavbar(e)}>Project</a>
+                        </li>
+                        <li>
                             <a href="#interest" onClick={e => toggleNavbar(e)}>Interest</a>
                         </li>
                         <li>

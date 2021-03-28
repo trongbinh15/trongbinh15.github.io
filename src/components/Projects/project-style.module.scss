@@ -1,0 +1,21 @@
+.container{
+  background-color: #f0f0f0;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+     margin: 0;
+  padding: 0;
+    .card{
+      padding: 1rem;
+      @media(min-width: 300px) {
+        width: 100%;
+      }
+      @media(min-width: 600px) {
+        width: 45%;
+      }
+      @media(min-width: 1375px) {
+        width: 31%;
+      }
+    }
+  }
+}
