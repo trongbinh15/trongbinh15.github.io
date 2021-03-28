@@ -1,6 +1,0 @@
-@font-face{font-family:"Poppins";font-style:normal;font-weight:100;src:url(fonts/Poppins-Regular.ttf) format("truetype"),url(fonts/Poppins-Light.ttf) format("truetype")}:export{primaryColor:#2c3e50;darkColor:#343a40;successColor:#28a745}html,body{margin:0;font-family:"Poppins",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;scroll-behavior:smooth}html h1,body h1{position:relative;margin:0;display:inline-block;padding:25px 0}html h1::after,body h1::after{content:"";position:absolute;left:-26px;top:31px;height:20px;width:20px;background-color:#2c3e50}
-.scroll-to-top--y6Lek{width:50px;height:50px;border-radius:50%;position:fixed;cursor:pointer;bottom:2%;right:2%;display:flex;z-index:1;box-shadow:0px 10px 10px -8px rgba(0,0,0,.3);justify-content:center;background-color:#7997b5;transition:all .5s ease}.scroll-to-top--y6Lek:hover{background-color:#2c3e50}.scroll-to-top--y6Lek i{line-height:50px;color:#fff}
-.container--29PJG{margin:20px}.container--29PJG h2{text-align:center;color:gray}.container--29PJG img{height:100px;width:100px;display:block;margin:0 auto}
-.header--1PTqp{display:flex;justify-content:center}
-
-/*# sourceMappingURL=index.d9fd4a343507e6953e48.css.map*/
