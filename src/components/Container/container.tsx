@@ -23,7 +23,7 @@ function Container({ children, title, backgroundColor, backgroundImage, titleCol
 
     return (
         <>
-            <div style={{backgroundColor: backgroundColor, backgroundImage: backgroundImage, minHeight: '50vh'}} ref={ref}>
+            <div style={{backgroundColor: backgroundColor, backgroundImage: backgroundImage, minHeight: '100vh'}} ref={ref}>
                 <div className={styled.header}>
                     {title && <h1 style={{color:titleColor }}>{title}</h1>}
                 </div>

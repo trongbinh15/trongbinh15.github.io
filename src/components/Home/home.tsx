@@ -32,7 +32,7 @@ function HomeComponent() {
                                 </a>
                             </button>
                             <button>
-                                <a>Download CV</a>
+                                <a href='https://drive.google.com/file/d/1s2erh_37yRNnPyCCPuWLlyMucvuSaTBh/view?usp=sharing'>Download CV</a>
                             </button>
                         </div>
                     </div>

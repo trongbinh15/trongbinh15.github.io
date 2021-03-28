@@ -2,7 +2,6 @@ import {useFormik} from 'formik';
 import React, {useEffect, useRef, useState} from 'react';
 import styled from './contact-styles.module.scss';
 import emailjs from 'emailjs-com';
-import 'react-toastify/dist/ReactToastify.css';
 
 type IFormData = {
   name?: string;
