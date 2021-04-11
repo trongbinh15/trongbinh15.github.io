@@ -1,22 +1,15 @@
 import LazyImage from '../LazyImage/lazy-image';
-import React, { lazy, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import placeHolder from '../../asset/images/placeholder.png';
 import styled from './galley-styles.module.scss'
 import { Link } from 'react-router-dom';
-import { Module } from "webpack";
-
-
-type IImage = {
-  src: string;
-  thumbnail: string;
-  alt: string;
-}
+import { useContext } from 'react';
+import { ThemeContext } from '../../theme/provider';
 
 function GalleryComponent(){
   const [loaded, setLoaded] = useState(false);
   const [images, setImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
-  const [alts, setAlts] = useState([]);
 
   const myModal = useRef(null);
   const imgModal = useRef(null);
@@ -31,6 +24,8 @@ function GalleryComponent(){
     'height': 'auto',
     'border-radius': '5px'
   };
+
+  const { mode } = useContext(ThemeContext);
 
   useEffect(() => {
     const images = importAll(require.context('../../asset/images/original', false, /\.(png|jpe?g|svg)$/));
