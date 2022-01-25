@@ -1,0 +1,40 @@
+name: CICD Flow
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }} 
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn  
+      - run: yarn run build
+  main: 
+    runs-on: ubuntu-latest
+    name: Deploy Github Page
+    if: ${{ github.event_name != 'pull_request' }} 
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Set email
+        run: git config --global user.email "${{ secrets.EMAIL }}"
+      - name: Set username
+        run: git config --global user.name "${{ secrets.USERNAME }}"
+      - name: Install Dependencies
+        run:  yarn 
+      - name: Run build command
+        run:  yarn run build
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.4.1 # This step installs the ssh client into the workflow run. There's many options available for this on the action marketplace.
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          SSH: true
+          BRANCH: gh-pages
+          FOLDER: dist
