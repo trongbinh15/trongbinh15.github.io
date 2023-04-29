@@ -1,22 +1,3 @@
 {
-  "compileOnSave": true,
-  "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
-    "allowJs": true,
-    "jsx": "react",
-    "outDir": "./dist",
-    "rootDir": "./",
-    "removeComments": false,
-    "isolatedModules": true,
-    "strict": true,
-    "strictNullChecks": false,
-    "moduleResolution": "node",
-    "baseUrl": "./src",
-    "typeRoots": ["node_modules/@types", "src/typings"],
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "extends": "astro/tsconfigs/base"
 }
